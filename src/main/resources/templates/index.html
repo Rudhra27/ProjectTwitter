@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<th:block th:include="fragments/navbar :: navbarhead" />
+</head>
+<body>
+	<div class="container-fluid">
+
+		<th:block th:include="fragments/navbar :: navbar" />
+
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-md-6">
+					<h1>Joetwitter</h1>
+					<p>This is a social network inspired by twitter.</p>
+					<p>Sign up and have a lot of fun.</p>
+				</div>
+				<div class="col-md-6">
+					<h2>New user</h2>
+					<form action="#" th:action="@{/user}" th:object="${user}"
+						method="post">
+						<div class="form-group"
+							th:class="${#fields.hasErrors('username')}? has-error">
+							<label for="username">Username:</label> <input type="text"
+								class="form-control" id="username" placeholder="Username"
+								th:field="*{username}" autofocus="autofocus" required="required" />
+							<ul>
+								<li th:each="err : ${#fields.errors('username')}" th:text="${err}" />
+							</ul>
+						</div>
+						<div class="form-group"
+							th:class="${#fields.hasErrors('password')}? has-error">
+							<label for="password">Password:</label> <input type="password"
+								class="form-control" id="password" placeholder="Password"
+								th:field="*{password}" required="required" />
+							<ul>
+								<li th:each="err : ${#fields.errors('password')}" th:text="${err}" />
+							</ul>
+						</div>
+						<button type="submit" class="btn btn-primary">Create account</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<th:block th:include="fragments/navbar :: navbarscripts" />
+</body>
+</html>

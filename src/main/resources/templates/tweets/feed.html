@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<th:block th:include="fragments/navbar :: navbarhead" />
+</head>
+<body>
+	<div class="container-fluid">
+
+		<th:block th:include="fragments/navbar :: navbar" />
+
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<form action="#" th:action="@{/tweet}" method="post">
+				<div class="form-group">
+					<label for="tweet">New Tweet</label>
+					<textarea class="form-control" id="tweet" placeholder="Tweet here"
+						rows="5" cols="" name="content"></textarea>
+				</div>
+				<button type="submit" class="btn btn-default">Tweet</button>
+			</form>
+		</div>
+		<div class="jumbotron" th:each="tweet : ${tweets}" th:include="fragments/tweet :: tweet">
+		</div>
+	</div>
+
+	<th:block th:include="fragments/navbar :: navbarscripts" />
+</body>
+</html>

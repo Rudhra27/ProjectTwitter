@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="jumbotron" th:fragment="tweet">
+			<h3>
+				<a th:href="@{/} + ${tweet.poster.username}"
+					th:text="'@' + ${tweet.poster.username}"></a>
+			</h3>
+			<p th:text="${tweet.content}" />
+		</div>
+	</div>
+
+</body>
+</html>
